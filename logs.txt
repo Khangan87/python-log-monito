@@ -1,0 +1,8 @@
+INFO: Server started successfully.
+WARNING: Disk usage reached 75%.
+ERROR: Application failed to start.
+INFO: Backup completed 
+ERROR: Database connection failed.
+WARNING: CPU usage reached 80%.
+CRITICAL:Server disk almost full 
+INFO:Backup completed successfully
