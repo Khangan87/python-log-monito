@@ -27,7 +27,10 @@ try:
     print(f"Total Logs: {total_logs}")
     if critical_count > 0:
         print("ALERT: Critical issues found!")
-    else:
-        print("system running normally.")
+    
+        if error_count > 0:
+            print("ALERT: Application Errors detected!")
+            if critical_count ==0 and error_count == 0:
+                print("System is running normally.")
 except FileNotFoundError:
-    print("Log file not found.")
+    print("Log file not found.") 
