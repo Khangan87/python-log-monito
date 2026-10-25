@@ -5,4 +5,4 @@ INFO: Backup completed
 ERROR: Database connection failed.
 WARNING: CPU usage reached 80%.
 CRITICAL:Server disk almost full 
-INFO:Backup completed successfully
+INFO:Backup completed successfully 

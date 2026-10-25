@@ -30,6 +30,8 @@ try:
     
         if error_count > 0:
             print("ALERT: Application Errors detected!")
+            if warning_count > 0:
+                print("ALERT: Warnings detected!")
             if critical_count ==0 and error_count == 0:
                 print("System is running normally.")
 except FileNotFoundError:
