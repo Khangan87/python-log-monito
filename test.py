@@ -1,17 +1,12 @@
-def check_disk(diskusage):
-    if diskusage < 0 or diskusage > 100:
-        return "INVALID  DISK USAGE"
-    if diskusage > 75:
-        return "CRITICAL ALERT"
-    elif diskusage >= 70:
-        return "WARNING!"
+
+import json
+with open("server.json", "r") as file:
+    servers = json.load(file)
+
+for server in servers:
+    if server["CPU"] > 80:
+        print("CRITICAL:", server["name"])
+    elif server["CPU"] > 65:
+        print("WARNING:", server["name"])
     else:
-        return "DISK NORMAL"
-
-
-try:
-    diskusage = int(input("Enter disk usage%:"))
-    print(check_disk(diskusage))
-
-except ValueError:
-    print("Please enter a valid number")
+        print("NORMAL:", server["name"])
