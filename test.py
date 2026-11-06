@@ -5,37 +5,33 @@ with open("server.json", "r") as file:
     servers = json.load(file)
 
 
-def check_cpu():
-    cpu = 90
+def check_cpu(cpu):
+    
     if cpu > 80:
         print("CPU: Critical")
     else:
         print("CPU: Normal")
 
 
-for server in servers:
-    print("\n server:", server["name"])
-
-    if server["CPU"] > 80:
-        print("CPU: Critical")
-    elif server["CPU"] > 65:
-        print("CPU: Warning")
-    else:
-        print("CPU: Normal")
-
-    if server["Memory"] > 80:
+def check_memory(memory):
+    
+    if memory > 80:
         print("Memory: Critical")
-    elif server["Memory"] > 65:
-        print("Memory: Warning")
     else:
         print("Memory: Normal")
 
-    if server["Disk"] > 80:
+
+def check_disk(disk):
+    
+    if disk > 80:
         print("Disk: Critical")
-    elif server["Disk"] > 65:
-        print("Disk: Warning")
     else:
         print("Disk: Normal")
 
 
-check_cpu() 
+for server in servers:
+    print("\n server:", server["name"])
+
+    check_cpu(server["CPU"])
+    check_memory(server["Memory"])
+    check_disk(server["Disk"]) 
