@@ -1,11 +1,21 @@
 
 import json
+
 with open("server.json", "r") as file:
     servers = json.load(file)
 
+
+def check_cpu():
+    cpu = 90
+    if cpu > 80:
+        print("CPU: Critical")
+    else:
+        print("CPU: Normal")
+
+
 for server in servers:
     print("\n server:", server["name"])
-    
+
     if server["CPU"] > 80:
         print("CPU: Critical")
     elif server["CPU"] > 65:
@@ -26,3 +36,6 @@ for server in servers:
         print("Disk: Warning")
     else:
         print("Disk: Normal")
+
+
+check_cpu() 
