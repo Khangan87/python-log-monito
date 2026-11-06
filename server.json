@@ -1,6 +1,7 @@
 
 [
-    {"name": "webserver", "CPU":65},
-    {"name": "database", "CPU":90},
-    {"name": "app", "CPU":70}
+    {"name": "webserver", "CPU":65, "Memory": 80, "Disk": 90},
+    {"name": "database", "CPU":90, "Memory": 90, "Disk": 85},
+    {"name": "app", "CPU":70, "Memory": 75, "Disk": 80}
 ] 
+
