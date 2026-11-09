@@ -6,32 +6,16 @@ with open("server.json", "r") as file:
 
 
 def check_cpu(cpu):
-    
     if cpu > 80:
-        print("CPU: Critical")
+        return "Critical"
+    elif cpu > 65:
+        return "Warning"
     else:
-        print("CPU: Normal")
+        return "Normal"
 
-
-def check_memory(memory):
-    
-    if memory > 80:
-        print("Memory: Critical")
-    else:
-        print("Memory: Normal")
-
-
-def check_disk(disk):
-    
-    if disk > 80:
-        print("Disk: Critical")
-    else:
-        print("Disk: Normal")
-
-
-for server in servers:
-    print("\n server:", server["name"])
-
-    check_cpu(server["CPU"])
-    check_memory(server["Memory"])
-    check_disk(server["Disk"]) 
+status = check_cpu(90)
+print(f"CPU: {status}")
+status = check_cpu(70)
+print(f"CPU: {status}")
+status = check_cpu(50)
+print(f"CPU: {status}")
