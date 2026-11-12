@@ -36,12 +36,12 @@ print("\nProcess CPU Usage:")
 for process in psutil.process_iter(["pid", "name"]):
     try:
         cpu = process.cpu_percent(interval=0.1)
-
-        print(
-            "PID:", process.info["pid"],
-            "Name:", process.info["name"],
-            "CPU:", cpu, "%"
-        )
+        if cpu > 10:
+            print(
+                "PID:", process.info["pid"],
+                "Name:", process.info["name"],
+                "CPU:", cpu, "%"
+            )
 
     except (psutil.NoSuchProcess, psutil.AccessDenied):
         pass            
