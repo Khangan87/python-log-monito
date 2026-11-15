@@ -58,14 +58,26 @@ for process in psutil.process_iter(["pid", "name", "memory_info"]):
         )
     except (psutil.NoSuchProcess, psutil.AccessDenied):
         pass
-    print("\nCPU Monitoring Alert:")
-    cpu_usage = psutil.cpu_percent(interval=1)
-    
-    if cpu_usage > 80:
-        print("CRITICAL:  CPU Usage in High!")
-    elif cpu_usage > 65:
-        print("WARNING: CPU Usage is increasing.")
-    else:
-        print("Normal: CPU Usage is Healthy.")  
-        print("current CPU Usage:", cpu_usage,  "%")  
-            
+
+print("\nCPU Monitoring Alert:")
+cpu_usage = psutil.cpu_percent(interval=1)
+
+if cpu_usage > 80:
+    print("CRITICAL:  CPU Usage in High!")
+elif cpu_usage > 65:
+    print("WARNING: CPU Usage is increasing.")
+else:
+    print("Normal: CPU Usage is Healthy.")
+    print("current CPU Usage:", cpu_usage, "%")
+
+print("\nRAM Monitoring Alert:")
+ram_usage = psutil.virtual_memory().percent
+
+if ram_usage > 80:
+    print("CRITICAL:  RAM Usage in High!")
+elif ram_usage > 65:
+    print("WARNING: RAM Usage is increasing.")
+else:
+    print("Normal: RAM Usage is Healthy.")
+    print("current RAM Usage:", ram_usage, "%")
+                        
