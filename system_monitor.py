@@ -58,4 +58,14 @@ for process in psutil.process_iter(["pid", "name", "memory_info"]):
         )
     except (psutil.NoSuchProcess, psutil.AccessDenied):
         pass
+    print("\nCPU Monitoring Alert:")
+    cpu_usage = psutil.cpu_percent(interval=1)
     
+    if cpu_usage > 80:
+        print("CRITICAL:  CPU Usage in High!")
+    elif cpu_usage > 65:
+        print("WARNING: CPU Usage is increasing.")
+    else:
+        print("Normal: CPU Usage is Healthy.")  
+        print("current CPU Usage:", cpu_usage,  "%")  
+            
