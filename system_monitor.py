@@ -68,7 +68,7 @@ elif cpu_usage > 65:
     print("WARNING: CPU Usage is increasing.")
 else:
     print("Normal: CPU Usage is Healthy.")
-    print("current CPU Usage:", cpu_usage, "%")
+print("current CPU Usage:", cpu_usage, "%")
 
 print("\nRAM Monitoring Alert:")
 ram_usage = psutil.virtual_memory().percent
@@ -79,5 +79,5 @@ elif ram_usage > 65:
     print("WARNING: RAM Usage is increasing.")
 else:
     print("Normal: RAM Usage is Healthy.")
-    print("current RAM Usage:", ram_usage, "%")
+print("current RAM Usage:", ram_usage, "%")
                         
