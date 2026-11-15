@@ -44,4 +44,18 @@ for process in psutil.process_iter(["pid", "name"]):
             )
 
     except (psutil.NoSuchProcess, psutil.AccessDenied):
-        pass            
+        pass     
+print("\nProcess Memory Usage:")
+
+for process in psutil.process_iter(["pid", "name", "memory_info"]):
+    try:
+        memory = process.memory_info().rss / (1024 ** 2)  # Convert to MB
+        if memory > 100:  
+         print(
+            "PID:", process.info["pid"],
+            "Name:", process.info["name"],
+            "Memory:", round(memory, 2), "MB"
+        )
+    except (psutil.NoSuchProcess, psutil.AccessDenied):
+        pass
+    
