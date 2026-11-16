@@ -80,4 +80,14 @@ elif ram_usage > 65:
 else:
     print("Normal: RAM Usage is Healthy.")
 print("current RAM Usage:", ram_usage, "%")
+
+print("\nDisk Monitoring Alert:")
+disk_usage = psutil.disk_usage('/').percent 
+print("current Disk Usage:", disk_usage, "%")
+if disk_usage > 80:
+    print("CRITICAL:  Disk Usage in High!")
+elif disk_usage > 65:
+    print("WARNING: Disk Usage is increasing.")
+else:
+    print("Normal: Disk Usage is Healthy.") 
                         
