@@ -12,6 +12,30 @@ print("user:", os.getlogin())
 
 
 import psutil
+def check_cpu (cpu_usage):
+    if cpu_usage > 80:
+        return "CRITICAL"
+    elif cpu_usage > 65:
+        return "WARNING"
+    else:
+        return "Normal"
+
+cpu_status = check_cpu(90)
+print("Test CPU Status:", cpu_status)
+def check_ram (ram_usage):
+    if ram_usage > 80:
+        return "CRITICAL"
+    elif ram_usage > 65:
+        return "WARNING"
+    else:
+        return "Normal"
+def check_disk (disk_usage):
+    if disk_usage > 80:
+        return "CRITICAL"
+    elif disk_usage > 65:
+        return "WARNING"
+    else:
+        return "Normal"    
 print("CPU Usage:", psutil.cpu_percent(interval=1), "%")
 memory = psutil.virtual_memory()
 print("Total RAM:" , memory.total / (1024 ** 3), "GB")
@@ -59,35 +83,26 @@ for process in psutil.process_iter(["pid", "name", "memory_info"]):
     except (psutil.NoSuchProcess, psutil.AccessDenied):
         pass
 
-print("\nCPU Monitoring Alert:")
 cpu_usage = psutil.cpu_percent(interval=1)
-
-if cpu_usage > 80:
-    print("CRITICAL:  CPU Usage in High!")
-elif cpu_usage > 65:
-    print("WARNING: CPU Usage is increasing.")
-else:
-    print("Normal: CPU Usage is Healthy.")
-print("current CPU Usage:", cpu_usage, "%")
-
-print("\nRAM Monitoring Alert:")
 ram_usage = psutil.virtual_memory().percent
+disk_usage = psutil.disk_usage('/').percent
+print("\nSystem Resource Status:")  
+cpu_status = check_cpu(cpu_usage)
+ram_status = check_ram(ram_usage)
+disk_status = check_disk(disk_usage)
 
-if ram_usage > 80:
-    print("CRITICAL:  RAM Usage in High!")
-elif ram_usage > 65:
-    print("WARNING: RAM Usage is increasing.")
-else:
-    print("Normal: RAM Usage is Healthy.")
-print("current RAM Usage:", ram_usage, "%")
 
-print("\nDisk Monitoring Alert:")
-disk_usage = psutil.disk_usage('/').percent 
-print("current Disk Usage:", disk_usage, "%")
-if disk_usage > 80:
-    print("CRITICAL:  Disk Usage in High!")
-elif disk_usage > 65:
-    print("WARNING: Disk Usage is increasing.")
-else:
-    print("Normal: Disk Usage is Healthy.") 
-                        
+import platform
+import os
+import psutil
+import logging
+logging.basicConfig(filename='system_monitor.log', level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
+logging.info("System Monitor Started")
+print("CPU Status:", cpu_status)
+logging.info(f"CPU Usage: {cpu_usage}% - Status: {cpu_status}")
+
+print("RAM Status:", ram_status)
+logging.info(f"RAM Usage: {ram_usage}% - Status: {ram_status}")
+
+print("Disk Status:", disk_status)
+logging.info(f"Disk Usage: {disk_usage}% - Status: {disk_status}")

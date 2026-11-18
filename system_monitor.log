@@ -1,0 +1,10 @@
+2026-11-18 20:56:07,756 - INFO - System monitoring started.
+2026-11-18 21:09:03,454 - INFO - System Monitor Started
+2026-11-18 21:12:00,536 - INFO - System Monitor Started
+2026-11-18 21:12:00,536 - INFO - CPU Status: Normal, RAM Status: CRITICAL, Disk Status: Normal
+2026-11-18 21:16:40,935 - INFO - System Monitor Started
+2026-11-18 21:16:40,935 - INFO - CPU Status: Normal%, RAM Status: CRITICAL%, Disk Status: Normal%
+2026-11-18 21:18:03,728 - INFO - System Monitor Started
+2026-11-18 21:18:03,728 - INFO - CPU Usage: 10.5% - Status: Normal
+2026-11-18 21:18:03,728 - INFO - RAM Usage: 81.6% - Status: CRITICAL
+2026-11-18 21:18:03,728 - INFO - Disk Usage: 2.9% - Status: Normal
